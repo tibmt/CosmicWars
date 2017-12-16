@@ -1,0 +1,13 @@
+@font-face {
+    font-family:'DeadSpaceTitleFont';
+    src: url(../fonts/DeadSpaceTitleFont.ttf);
+}
+
+body{
+    margin: 0;
+}
+canvas{
+    position: relative;
+    top: 0;
+    left: 0;
+}
