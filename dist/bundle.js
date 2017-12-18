@@ -3777,7 +3777,6 @@ let healthBarBlack = 0x000000;
 let healthBarRed = 0xff0000;
 
 
-// export {gameLoopSec};
 
 
 /***/ }),
@@ -20794,12 +20793,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__style_style_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pixi_js__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_pixi_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_pixi_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_howler__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_howler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_howler__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__play_js__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__functionalKeys_js__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__initGame_js__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__const_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__const_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sounds_sfx_laser1_ogg__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sounds_sfx_laser1_ogg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__sounds_sfx_laser1_ogg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sounds_sfx_laser2_ogg__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sounds_sfx_laser2_ogg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__sounds_sfx_laser2_ogg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__functionalKeys_js__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_howler__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_howler___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_howler__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__initGame_js__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__play_js__ = __webpack_require__(209);
 
 
 
@@ -20808,16 +20811,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+// import * as bkgImg from 'https://tibmt.github.io/CosmicWars/dist/backgroundImgBlue.png'
 
 
-// import * as firstLazerSound from '../sounds/sfx_laser1.ogg'
-// import * as secondLazerSound from '../sounds/sfx_laser2.ogg'
 
-// import * as bkgImg from '../img/backgroundImgBlue.png'
-// import * as shipBlue from '../img/playerShip1_blue.png'
-// import * as lazerBlue from '../img/laserBlue02.png'
-// import * as lazerRed from '../img/laserRed02.png'
-// import * as enemyRed from '../img/enemyRed1.png'
+
 
 
 class Game {
@@ -20841,7 +20839,7 @@ class Game {
         this.bonusCount = 0;
         this.boltTimer = 0;
 
-        this.app = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Application"](__WEBPACK_IMPORTED_MODULE_6__const_js__["k" /* width */], __WEBPACK_IMPORTED_MODULE_6__const_js__["g" /* height */]);
+        this.app = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Application"](__WEBPACK_IMPORTED_MODULE_2__const_js__["k" /* width */], __WEBPACK_IMPORTED_MODULE_2__const_js__["g" /* height */]);
 
     }
 
@@ -20859,7 +20857,7 @@ class Game {
         /**
          * Draw background
          */
-        this.texture = __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Texture"].fromImage('img/backgroundImgBlue.png'),
+        this.texture = __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Texture"].fromImage('https://tibmt.github.io/CosmicWars/dist/backgroundImgBlue.png'),
 
             this.tilingSprite = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["extras"].TilingSprite(
                 this.texture,
@@ -20875,15 +20873,15 @@ class Game {
         this.buttons = [1, 1, 1];
 
         this.buttonPositions = [
-            __WEBPACK_IMPORTED_MODULE_6__const_js__["b" /* buttonPosWidth */], 100,
-            __WEBPACK_IMPORTED_MODULE_6__const_js__["b" /* buttonPosWidth */], 250,
-            __WEBPACK_IMPORTED_MODULE_6__const_js__["b" /* buttonPosWidth */], 400
+            __WEBPACK_IMPORTED_MODULE_2__const_js__["b" /* buttonPosWidth */], 100,
+            __WEBPACK_IMPORTED_MODULE_2__const_js__["b" /* buttonPosWidth */], 250,
+            __WEBPACK_IMPORTED_MODULE_2__const_js__["b" /* buttonPosWidth */], 400
         ];
 
         this.buttons = this.buttons.map( (item, index) => {
 
             item = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Graphics"]();
-            item.beginFill(__WEBPACK_IMPORTED_MODULE_6__const_js__["h" /* orange */]);
+            item.beginFill(__WEBPACK_IMPORTED_MODULE_2__const_js__["h" /* orange */]);
             item.drawRoundedRect(0, 0, 300, 100, 15);
             item.endFill();
             item.interactive = true;
@@ -20919,14 +20917,14 @@ class Game {
              */
             this.styleItemText = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["TextStyle"]({
                 fontSize: 35,
-                fill: __WEBPACK_IMPORTED_MODULE_6__const_js__["j" /* white */],
+                fill: __WEBPACK_IMPORTED_MODULE_2__const_js__["j" /* white */],
                 dropShadow: true,
-                dropShadowColor: __WEBPACK_IMPORTED_MODULE_6__const_js__["a" /* black */],
+                dropShadowColor: __WEBPACK_IMPORTED_MODULE_2__const_js__["a" /* black */],
                 dropShadowBlur: 4,
                 dropShadowAngle: Math.PI / 6,
                 dropShadowDistance: 6
             });
-            this.itemText = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"](__WEBPACK_IMPORTED_MODULE_6__const_js__["i" /* text */][index], this.styleItemText);
+            this.itemText = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"](__WEBPACK_IMPORTED_MODULE_2__const_js__["i" /* text */][index], this.styleItemText);
             this.itemText.anchor.set(0.5);
             this.itemText.position.set(item.width / 2, item.height / 2);
             item.addChild(this.itemText);
@@ -20953,18 +20951,18 @@ class Game {
          */
         this.controlsStyle = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["TextStyle"]({
             fontSize: 60,
-            fill: __WEBPACK_IMPORTED_MODULE_6__const_js__["j" /* white */],
+            fill: __WEBPACK_IMPORTED_MODULE_2__const_js__["j" /* white */],
             dropShadow: true,
-            dropShadowColor: __WEBPACK_IMPORTED_MODULE_6__const_js__["a" /* black */],
+            dropShadowColor: __WEBPACK_IMPORTED_MODULE_2__const_js__["a" /* black */],
             dropShadowBlur: 4,
             dropShadowAngle: Math.PI / 6,
             dropShadowDistance: 6
         });
         this.controlsKeyStyle = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["TextStyle"]({
             fontSize: 60,
-            fill: __WEBPACK_IMPORTED_MODULE_6__const_js__["l" /* yellow */],
+            fill: __WEBPACK_IMPORTED_MODULE_2__const_js__["l" /* yellow */],
             dropShadow: true,
-            dropShadowColor: __WEBPACK_IMPORTED_MODULE_6__const_js__["a" /* black */],
+            dropShadowColor: __WEBPACK_IMPORTED_MODULE_2__const_js__["a" /* black */],
             dropShadowBlur: 4,
             dropShadowAngle: Math.PI / 6,
             dropShadowDistance: 6
@@ -20975,7 +20973,7 @@ class Game {
          */
         this.controlsTextOne = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"]('To Move your ship use the', this.controlsStyle);
         this.controlsTextOne.anchor.set(0.5);
-        this.controlsTextOne.position.set(__WEBPACK_IMPORTED_MODULE_6__const_js__["c" /* controlsTextWidth */] - 100, 200);
+        this.controlsTextOne.position.set(__WEBPACK_IMPORTED_MODULE_2__const_js__["c" /* controlsTextWidth */] - 100, 200);
         this.app.stage.addChild(this.controlsTextOne);
 
         this.controlsTextOneKey = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"]('arrows', this.controlsKeyStyle);
@@ -20985,7 +20983,7 @@ class Game {
 
         this.controlsTextTwo = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"]('To shoot you have to press', this.controlsStyle);
         this.controlsTextTwo.anchor.set(0.5);
-        this.controlsTextTwo.position.set(__WEBPACK_IMPORTED_MODULE_6__const_js__["c" /* controlsTextWidth */] - 50, 300);
+        this.controlsTextTwo.position.set(__WEBPACK_IMPORTED_MODULE_2__const_js__["c" /* controlsTextWidth */] - 50, 300);
         this.app.stage.addChild(this.controlsTextTwo);
 
         this.controlsTextTwoKey = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"]('\'Z\'', this.controlsKeyStyle);
@@ -20995,7 +20993,7 @@ class Game {
 
         this.controlsTextThree = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"]('To exit the menu press', this.controlsStyle);
         this.controlsTextThree.anchor.set(0.5);
-        this.controlsTextThree.position.set(__WEBPACK_IMPORTED_MODULE_6__const_js__["c" /* controlsTextWidth */] - 50, 400);
+        this.controlsTextThree.position.set(__WEBPACK_IMPORTED_MODULE_2__const_js__["c" /* controlsTextWidth */] - 50, 400);
         this.app.stage.addChild(this.controlsTextThree);
 
         this.controlsTextThreeKey = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["Text"]('\'M\'', this.controlsKeyStyle);
@@ -21021,9 +21019,9 @@ class Game {
         this.descriptionStyle = new __WEBPACK_IMPORTED_MODULE_1_pixi_js__["TextStyle"]({
             fontSize: 40,
             fontFamily: "Arial",
-            fill: __WEBPACK_IMPORTED_MODULE_6__const_js__["j" /* white */],
+            fill: __WEBPACK_IMPORTED_MODULE_2__const_js__["j" /* white */],
             dropShadow: true,
-            dropShadowColor: __WEBPACK_IMPORTED_MODULE_6__const_js__["a" /* black */],
+            dropShadowColor: __WEBPACK_IMPORTED_MODULE_2__const_js__["a" /* black */],
             dropShadowBlur: 4,
             dropShadowAngle: Math.PI / 6,
             dropShadowDistance: 6
@@ -21042,10 +21040,10 @@ class Game {
         this.controlsTextThree.anchor.set(0.5);
         this.controlsTextFour.anchor.set(0.5);
 
-        this.controlsTextOne.position.set(__WEBPACK_IMPORTED_MODULE_6__const_js__["c" /* controlsTextWidth */], __WEBPACK_IMPORTED_MODULE_6__const_js__["g" /* height */] / 2 - 100);
-        this.controlsTextTwo.position.set(__WEBPACK_IMPORTED_MODULE_6__const_js__["c" /* controlsTextWidth */], this.controlsTextOne.y + 50);
-        this.controlsTextThree.position.set(__WEBPACK_IMPORTED_MODULE_6__const_js__["c" /* controlsTextWidth */], this.controlsTextOne.y + 100);
-        this.controlsTextFour.position.set(__WEBPACK_IMPORTED_MODULE_6__const_js__["c" /* controlsTextWidth */], this.controlsTextOne.y + 150);
+        this.controlsTextOne.position.set(__WEBPACK_IMPORTED_MODULE_2__const_js__["c" /* controlsTextWidth */], __WEBPACK_IMPORTED_MODULE_2__const_js__["g" /* height */] / 2 - 100);
+        this.controlsTextTwo.position.set(__WEBPACK_IMPORTED_MODULE_2__const_js__["c" /* controlsTextWidth */], this.controlsTextOne.y + 50);
+        this.controlsTextThree.position.set(__WEBPACK_IMPORTED_MODULE_2__const_js__["c" /* controlsTextWidth */], this.controlsTextOne.y + 100);
+        this.controlsTextFour.position.set(__WEBPACK_IMPORTED_MODULE_2__const_js__["c" /* controlsTextWidth */], this.controlsTextOne.y + 150);
 
         this.app.stage.addChild(this.controlsTextOne);
         this.app.stage.addChild(this.controlsTextTwo);
@@ -21060,7 +21058,7 @@ class Game {
 
     initGame() {
 
-        __WEBPACK_IMPORTED_MODULE_5__initGame_js__["a" /* initGame */].initGameMethod(this)
+        __WEBPACK_IMPORTED_MODULE_7__initGame_js__["a" /* initGame */].initGameMethod(this)
 
         this.sounds();
 
@@ -21076,10 +21074,10 @@ class Game {
 
         setInterval(() => {
 
-            __WEBPACK_IMPORTED_MODULE_3__play_js__["a" /* play */].playMethod(this);
+            __WEBPACK_IMPORTED_MODULE_8__play_js__["a" /* play */].playMethod(this);
             this.app.renderer.render(this.app.stage);
 
-        }, __WEBPACK_IMPORTED_MODULE_6__const_js__["d" /* gameLoopSec */]);
+        }, __WEBPACK_IMPORTED_MODULE_2__const_js__["d" /* gameLoopSec */]);
 
     }
 
@@ -21105,12 +21103,12 @@ class Game {
 
     sounds() {
 
-        this.myShootSound = new __WEBPACK_IMPORTED_MODULE_2_howler__["Howl"]({
-            src: ['sounds/sfx_laser1.ogg']
+        this.myShootSound = new __WEBPACK_IMPORTED_MODULE_6_howler__["Howl"]({
+            src: __WEBPACK_IMPORTED_MODULE_3__sounds_sfx_laser1_ogg__
         });
 
-        this.enemyShootSound = new __WEBPACK_IMPORTED_MODULE_2_howler__["Howl"]({
-            src: ['sounds/sfx_laser2.ogg']
+        this.enemyShootSound = new __WEBPACK_IMPORTED_MODULE_6_howler__["Howl"]({
+            src: __WEBPACK_IMPORTED_MODULE_4__sounds_sfx_laser2_ogg__
         });
 
     }
@@ -21118,7 +21116,7 @@ class Game {
 }
 let cosmicWars = new Game('Cosmic Wars');
 cosmicWars.init();
-__WEBPACK_IMPORTED_MODULE_4__functionalKeys_js__["a" /* functionalKeys */].functionalKeysMethod(cosmicWars);
+__WEBPACK_IMPORTED_MODULE_5__functionalKeys_js__["a" /* functionalKeys */].functionalKeysMethod(cosmicWars);
 
 
 
@@ -42139,6 +42137,215 @@ exports.default = TimeLimiter;
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__.p + "sfx_laser1.ogg?358307a1211ed4ade56ecdb3b980384d";
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "sfx_laser2.ogg?d1cba4e2b3f98a61aaed1b08a03abd7b";
+
+/***/ }),
+/* 197 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return functionalKeys; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__ = __webpack_require__(198);
+
+
+class FunctionalKeysClass{
+    
+    constructor() {
+        
+    }
+
+    /**
+     *
+     *  All things about control-keys
+     *  and how to use it
+     */
+    
+    functionalKeysMethod(that) {
+        that.left = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(37);
+        that.up = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(38);
+        that.right = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(39);
+        that.down = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(40);
+        that.fire = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(90);
+        that.menu = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(77);
+
+        /**
+         * Add Left arrow methods
+         */
+        that.left.press = () => {
+            that.spaceShip.vx = -5;
+            that.spaceShip.vy = 0;
+        };
+        that.left.release = () => {
+            if (!that.right.isDown && that.spaceShip.vy === 0) {
+                that.spaceShip.vx = 0;
+            }
+        };
+
+        /**
+         * Add Up arrow methods
+         */
+        that.up.press = () => {
+            that.spaceShip.vy = -5;
+            that.spaceShip.vx = 0;
+        };
+        that.up.release = () => {
+            if (!that.down.isDown && that.spaceShip.vx === 0) {
+                that.spaceShip.vy = 0;
+            }
+        };
+
+        /**
+         * Add Right arrow methods
+         */
+        that.right.press = () => {
+            that.spaceShip.vx = 5;
+            that.spaceShip.vy = 0;
+        };
+        that.right.release = () => {
+            if (!that.left.isDown && that.spaceShip.vy === 0) {
+                that.spaceShip.vx = 0;
+            }
+        };
+
+        /**
+         * Add Down arrow methods
+         */
+        that.down.press = () => {
+            that.spaceShip.vy = 5;
+            that.spaceShip.vx = 0;
+        };
+        that.down.release = () => {
+            if (!that.up.isDown && that.spaceShip.vx === 0) {
+                that.spaceShip.vy = 0;
+            }
+        };
+
+        /**
+         * Add 'Z' methods
+         */
+        that.fire.press = () => {
+
+            that.myShootSound.play();
+            if (that.shootUpgreyd) {
+
+                that.shootOne = new PIXI.Sprite(that.shootTexture);
+
+                that.shootOne.anchor.set(0.5);
+                that.shootOne.x = that.spaceShip.x + that.spaceShip.width / 2;
+                that.shootOne.y = that.spaceShip.y + that.spaceShip.height / 2 - 15;
+                that.shootContainer.addChild(that.shootOne);
+
+                that.shootTwo = new PIXI.Sprite(that.shootTexture);
+
+                that.shootTwo.anchor.set(0.5);
+                that.shootTwo.x = that.shootOne.x;
+                that.shootTwo.y = that.spaceShip.y + that.spaceShip.height / 2 + 15;
+                that.shootContainer.addChild(that.shootTwo);
+
+                that.accuracyFalse += 2;
+            } else {
+
+                that.shoot = new PIXI.Sprite(that.shootTexture);
+
+                that.shoot.anchor.set(0.5);
+                that.shoot.x = that.spaceShip.x + that.spaceShip.width / 2;
+                that.shoot.y = that.shootCount % 2 === 0 ? that.spaceShip.y + that.spaceShip.height / 2 + 15 : that.spaceShip.y + that.spaceShip.height / 2 - 15;
+                that.shootContainer.addChild(that.shoot);
+                that.accuracyFalse += 1;
+            }
+            that.shootCount++;
+        };
+
+        /**
+         * Add 'M' methods
+         */
+        that.menu.press = () => {
+
+            // that.app.stop();
+            // that.app.renderer.resize(100, 100);
+
+            that.count = 0;
+            that.index = 1;
+            that.myHP = 100;
+            that.enemyHP = 40;
+            that.distance = 0;
+            that.shootCount = 0;
+            that.shootUpgreyd = 0;
+            that.gameTime = 0;
+            that.lastTime = Date.now();
+            that.enemyShootSoundCount = false;
+            that.accuracyTrue = 0;
+            that.accuracyFalse = 0;
+
+            that.app.stage.children.length = 1;
+
+            that.init();
+
+        }
+    }
+
+}
+
+const functionalKeys = new FunctionalKeysClass();
+
+
+
+
+/***/ }),
+/* 198 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = keyboard;
+function keyboard(keyCode) {
+    var key = {};
+    key.code = keyCode;
+    key.isDown = false;
+    key.isUp = true;
+    key.press = undefined;
+    key.release = undefined;
+    //The `downHandler`
+    key.downHandler = function(event) {
+        if (event.keyCode === key.code) {
+            if (key.isUp && key.press) key.press();
+            key.isDown = true;
+            key.isUp = false;
+        }
+        event.preventDefault();
+    };
+
+    //The `upHandler`
+    key.upHandler = function(event) {
+        if (event.keyCode === key.code) {
+            if (key.isDown && key.release) key.release();
+            key.isDown = false;
+            key.isUp = true;
+        }
+        event.preventDefault();
+    };
+
+    //Attach event listeners
+    window.addEventListener(
+        "keydown", key.downHandler.bind(key), false
+    );
+    window.addEventListener(
+        "keyup", key.upHandler.bind(key), false
+    );
+    return key;
+}
+
+
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  *  howler.js v2.0.5
  *  howlerjs.com
@@ -44990,14 +45197,238 @@ exports.default = TimeLimiter;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
-/* 196 */
+/* 200 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return initGame; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__img_backgroundImgBlue_png__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__img_backgroundImgBlue_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__img_backgroundImgBlue_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__img_playerShip1_blue_png__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__img_playerShip1_blue_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__img_playerShip1_blue_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__img_laserBlue02_png__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__img_laserBlue02_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__img_laserBlue02_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__img_laserRed02_png__ = __webpack_require__(204);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__img_laserRed02_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__img_laserRed02_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__img_enemyRed1_png__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__img_enemyRed1_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__img_enemyRed1_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__img_bolt_gold_png__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__img_bolt_gold_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__img_bolt_gold_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__img_pill_yellow_png__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__img_pill_yellow_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__img_pill_yellow_png__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__img_star_gold_png__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__img_star_gold_png___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__img_star_gold_png__);
+
+
+
+
+
+
+
+
+
+
+
+class InitGameClass{
+    
+    constructor() {
+        
+    }
+
+    /**
+     * @param that - access to cosmicWars
+     *  This method start game
+     */
+    
+    initGameMethod(that) {
+
+        that.tilingSpriteSpeed = -1;
+
+        /**
+         * Draw background
+         */
+        that.texture = PIXI.Texture.fromImage(__WEBPACK_IMPORTED_MODULE_1__img_backgroundImgBlue_png__);
+
+        that.tilingSprite = new PIXI.extras.TilingSprite(
+            that.texture,
+            that.app.renderer.width,
+            that.app.renderer.height
+        );
+
+        that.app.stage.addChild(that.tilingSprite);
+        that.app.ticker.add( () => {
+            that.tilingSprite.tilePosition.x += that.tilingSpriteSpeed;
+        });
+
+        /**
+         * Draw header(with healthBar)
+         */
+        that.header = new PIXI.Container();
+
+        that.header.position.set(0, 0);
+        that.app.stage.addChild(that.header);
+
+        /**
+         * Add healthBar on header
+         */
+        that.healthBarBlack = new PIXI.Graphics();
+
+        that.healthBarBlack.beginFill(__WEBPACK_IMPORTED_MODULE_0__const_js__["e" /* healthBarBlack */]);
+        that.healthBarBlack.drawRoundedRect(5, 5, 100, 20, 10);
+        that.healthBarBlack.endFill();
+        that.header.addChild(that.healthBarBlack);
+
+        that.healthBarRed = new PIXI.Graphics();
+
+        that.healthBarRed.beginFill(__WEBPACK_IMPORTED_MODULE_0__const_js__["f" /* healthBarRed */]);
+        that.healthBarRed.drawRoundedRect(5, 5, 100, 20, 10);
+        that.healthBarRed.endFill();
+        that.header.addChild(that.healthBarRed);
+
+        /**
+         * Add my Space Ship on screen
+         */
+        that.spaceShip = PIXI.Sprite.fromImage(__WEBPACK_IMPORTED_MODULE_2__img_playerShip1_blue_png__);
+
+        that.spaceShip.x = 50;
+        that.spaceShip.y = that.app.renderer.height / 2;
+        that.spaceShip.vx = 0;
+        that.spaceShip.vy = 0;
+        that.app.stage.addChild(that.spaceShip);
+
+        /**
+         * Draw my shoots
+         */
+        that.shootContainer = new PIXI.Container();
+
+        that.app.stage.addChild(that.shootContainer);
+        that.shootTexture = PIXI.Texture.fromImage(__WEBPACK_IMPORTED_MODULE_3__img_laserBlue02_png__);
+
+        /**
+         * Draw enemies shoots
+         */
+        that.enemyShootContainer = new PIXI.Container();
+
+        that.app.stage.addChild(that.enemyShootContainer);
+        that.enemyShootTexture = PIXI.Texture.fromImage(__WEBPACK_IMPORTED_MODULE_4__img_laserRed02_png__);
+
+        /**
+         * Draw enemies
+         */
+        that.enemiesContainer = new PIXI.Container();
+
+        that.app.stage.addChild(that.enemiesContainer);
+        that.enemyTexture = PIXI.Texture.fromImage(__WEBPACK_IMPORTED_MODULE_5__img_enemyRed1_png__);
+
+        that.enemy = new PIXI.Sprite(that.enemyTexture);
+        that.enemy.vx = -1.5;
+
+        /**
+         * Draw bonuses
+         */
+        that.bonusContainer = new PIXI.Container();
+
+        that.app.stage.addChild(that.bonusContainer);
+        that.pillTexture = PIXI.Texture.fromImage(__WEBPACK_IMPORTED_MODULE_7__img_pill_yellow_png__);
+
+        that.boltTexture = PIXI.Texture.fromImage(__WEBPACK_IMPORTED_MODULE_6__img_bolt_gold_png__);
+
+        that.starTexture = PIXI.Texture.fromImage(__WEBPACK_IMPORTED_MODULE_8__img_star_gold_png__);
+
+        that.pill = new PIXI.Sprite(that.pillTexture);
+
+        that.pill.anchor.set(0.5);
+        that.pill.x = __WEBPACK_IMPORTED_MODULE_0__const_js__["k" /* width */] + 100;
+        that.pill.y = 100;
+        that.pill.count = true;
+        that.pill.vx = 0;
+        that.bonusContainer.addChild(that.pill);
+
+        that.bolt = new PIXI.Sprite(that.boltTexture);
+
+        that.bolt.anchor.set(0.5);
+        that.bolt.x = __WEBPACK_IMPORTED_MODULE_0__const_js__["k" /* width */] + 100;
+        that.bolt.y = 100;
+        that.bolt.count = true;
+        that.bolt.vx = 0;
+        that.bonusContainer.addChild(that.bolt);
+
+        that.star = new PIXI.Sprite(that.starTexture);
+
+        that.star.anchor.set(0.5);
+        that.star.x = __WEBPACK_IMPORTED_MODULE_0__const_js__["k" /* width */] + 100;
+        that.star.y = 100;
+        that.star.count = true;
+        that.star.vx = 0;
+        that.bonusContainer.addChild(that.star);
+        
+    }
+    
+}
+
+const initGame = new InitGameClass();
+
+
+
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "backgroundImgBlue.png?486592e94dd155e3debc29eb0c1b626c";
+
+/***/ }),
+/* 202 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "playerShip1_blue.png?f9ef4529264a404efe793242563bcb83";
+
+/***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "laserBlue02.png?cd80b81ff1becd1fc1827af079604d53";
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "laserRed02.png?aa11a11eb8c1e8ba68299a3158cf723a";
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "enemyRed1.png?cadfc945514fb3625530f5ce191444cf";
+
+/***/ }),
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "bolt_gold.png?0f95a428c0af40d690e823f2302067a3";
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "pill_yellow.png?3d2fd166f0ad64d5398d08e2858c8cab";
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "star_gold.png?33dbd8b98af596f2ec03b4c1457f3258";
+
+/***/ }),
+/* 209 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return play; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__play_bonuses_js__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__play_enemy_js__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__play_spaceShip_js__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__play_bonuses_js__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__play_enemy_js__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__play_spaceShip_js__ = __webpack_require__(212);
 
 
 
@@ -45053,7 +45484,7 @@ const play = new PlayClass();
 
 
 /***/ }),
-/* 197 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45175,7 +45606,7 @@ const bonus = new Bonus();
 
 
 /***/ }),
-/* 198 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45340,14 +45771,14 @@ const enemies = new Enemy();
 
 
 /***/ }),
-/* 199 */
+/* 212 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return myShip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lib_contains_js__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_collision_js__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gameOver_js__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__gameOver_js__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__const_js__ = __webpack_require__(10);
 
 
@@ -45455,7 +45886,7 @@ const myShip = new SpaceShip();
 
 
 /***/ }),
-/* 200 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45537,354 +45968,6 @@ Your accuracy - ${Math.round(that.accuracyTrue / that.accuracyFalse * 100)} %`, 
 }
 
 const gameOver = new GameOverClass();
-
-
-
-
-/***/ }),
-/* 201 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return functionalKeys; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__ = __webpack_require__(202);
-
-
-class FunctionalKeysClass{
-    
-    constructor() {
-        
-    }
-
-    /**
-     *
-     *  All things about control-keys
-     *  and how to use it
-     */
-    
-    functionalKeysMethod(that) {
-        that.left = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(37);
-        that.up = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(38);
-        that.right = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(39);
-        that.down = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(40);
-        that.fire = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(90);
-        that.menu = Object(__WEBPACK_IMPORTED_MODULE_0__lib_keyBoard_js__["a" /* keyboard */])(77);
-
-        /**
-         * Add Left arrow methods
-         */
-        that.left.press = () => {
-            that.spaceShip.vx = -5;
-            that.spaceShip.vy = 0;
-        };
-        that.left.release = () => {
-            if (!that.right.isDown && that.spaceShip.vy === 0) {
-                that.spaceShip.vx = 0;
-            }
-        };
-
-        /**
-         * Add Up arrow methods
-         */
-        that.up.press = () => {
-            that.spaceShip.vy = -5;
-            that.spaceShip.vx = 0;
-        };
-        that.up.release = () => {
-            if (!that.down.isDown && that.spaceShip.vx === 0) {
-                that.spaceShip.vy = 0;
-            }
-        };
-
-        /**
-         * Add Right arrow methods
-         */
-        that.right.press = () => {
-            that.spaceShip.vx = 5;
-            that.spaceShip.vy = 0;
-        };
-        that.right.release = () => {
-            if (!that.left.isDown && that.spaceShip.vy === 0) {
-                that.spaceShip.vx = 0;
-            }
-        };
-
-        /**
-         * Add Down arrow methods
-         */
-        that.down.press = () => {
-            that.spaceShip.vy = 5;
-            that.spaceShip.vx = 0;
-        };
-        that.down.release = () => {
-            if (!that.up.isDown && that.spaceShip.vx === 0) {
-                that.spaceShip.vy = 0;
-            }
-        };
-
-        /**
-         * Add 'Z' methods
-         */
-        that.fire.press = () => {
-
-            that.myShootSound.play();
-            if (that.shootUpgreyd) {
-
-                that.shootOne = new PIXI.Sprite(that.shootTexture);
-
-                that.shootOne.anchor.set(0.5);
-                that.shootOne.x = that.spaceShip.x + that.spaceShip.width / 2;
-                that.shootOne.y = that.spaceShip.y + that.spaceShip.height / 2 - 15;
-                that.shootContainer.addChild(that.shootOne);
-
-                that.shootTwo = new PIXI.Sprite(that.shootTexture);
-
-                that.shootTwo.anchor.set(0.5);
-                that.shootTwo.x = that.shootOne.x;
-                that.shootTwo.y = that.spaceShip.y + that.spaceShip.height / 2 + 15;
-                that.shootContainer.addChild(that.shootTwo);
-
-                that.accuracyFalse += 2;
-            } else {
-
-                that.shoot = new PIXI.Sprite(that.shootTexture);
-
-                that.shoot.anchor.set(0.5);
-                that.shoot.x = that.spaceShip.x + that.spaceShip.width / 2;
-                that.shoot.y = that.shootCount % 2 === 0 ? that.spaceShip.y + that.spaceShip.height / 2 + 15 : that.spaceShip.y + that.spaceShip.height / 2 - 15;
-                that.shootContainer.addChild(that.shoot);
-                that.accuracyFalse += 1;
-            }
-            that.shootCount++;
-        };
-
-        /**
-         * Add 'M' methods
-         */
-        that.menu.press = () => {
-
-            // that.app.stop();
-            that.app.renderer.resize(100, 100);
-
-            that.count = 0;
-            that.index = 1;
-            that.myHP = 100;
-            that.enemyHP = 40;
-            that.distance = 0;
-            that.shootCount = 0;
-            that.shootUpgreyd = 0;
-            that.gameTime = 0;
-            that.lastTime = Date.now();
-            that.enemyShootSoundCount = false;
-            that.accuracyTrue = 0;
-            that.accuracyFalse = 0;
-
-            that.app.stage.children.length = 1;
-
-            that.init();
-
-        }
-    }
-
-}
-
-const functionalKeys = new FunctionalKeysClass();
-
-
-
-
-/***/ }),
-/* 202 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = keyboard;
-function keyboard(keyCode) {
-    var key = {};
-    key.code = keyCode;
-    key.isDown = false;
-    key.isUp = true;
-    key.press = undefined;
-    key.release = undefined;
-    //The `downHandler`
-    key.downHandler = function(event) {
-        if (event.keyCode === key.code) {
-            if (key.isUp && key.press) key.press();
-            key.isDown = true;
-            key.isUp = false;
-        }
-        event.preventDefault();
-    };
-
-    //The `upHandler`
-    key.upHandler = function(event) {
-        if (event.keyCode === key.code) {
-            if (key.isDown && key.release) key.release();
-            key.isDown = false;
-            key.isUp = true;
-        }
-        event.preventDefault();
-    };
-
-    //Attach event listeners
-    window.addEventListener(
-        "keydown", key.downHandler.bind(key), false
-    );
-    window.addEventListener(
-        "keyup", key.upHandler.bind(key), false
-    );
-    return key;
-}
-
-
-
-/***/ }),
-/* 203 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return initGame; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__const_js__ = __webpack_require__(10);
-
-
-class InitGameClass{
-    
-    constructor() {
-        
-    }
-
-    /**
-     * @param that - access to cosmicWars
-     *  This method start game
-     */
-    
-    initGameMethod(that) {
-
-        that.tilingSpriteSpeed = -1;
-
-        /**
-         * Draw background
-         */
-        that.texture = PIXI.Texture.fromImage('img/backgroundImgBlue.png');
-
-        that.tilingSprite = new PIXI.extras.TilingSprite(
-            that.texture,
-            that.app.renderer.width,
-            that.app.renderer.height
-        );
-
-        that.app.stage.addChild(that.tilingSprite);
-        that.app.ticker.add( () => {
-            that.tilingSprite.tilePosition.x += that.tilingSpriteSpeed;
-        });
-
-        /**
-         * Draw header(with healthBar)
-         */
-        that.header = new PIXI.Container();
-
-        that.header.position.set(0, 0);
-        that.app.stage.addChild(that.header);
-
-        /**
-         * Add healthBar on header
-         */
-        that.healthBarBlack = new PIXI.Graphics();
-
-        that.healthBarBlack.beginFill(__WEBPACK_IMPORTED_MODULE_0__const_js__["e" /* healthBarBlack */]);
-        that.healthBarBlack.drawRoundedRect(5, 5, 100, 20, 10);
-        that.healthBarBlack.endFill();
-        that.header.addChild(that.healthBarBlack);
-
-        that.healthBarRed = new PIXI.Graphics();
-
-        that.healthBarRed.beginFill(__WEBPACK_IMPORTED_MODULE_0__const_js__["f" /* healthBarRed */]);
-        that.healthBarRed.drawRoundedRect(5, 5, 100, 20, 10);
-        that.healthBarRed.endFill();
-        that.header.addChild(that.healthBarRed);
-
-        /**
-         * Add my Space Ship on screen
-         */
-        that.spaceShip = PIXI.Sprite.fromImage('img/playerShip1_blue.png');
-
-        that.spaceShip.x = 50;
-        that.spaceShip.y = that.app.renderer.height / 2;
-        that.spaceShip.vx = 0;
-        that.spaceShip.vy = 0;
-        that.app.stage.addChild(that.spaceShip);
-
-        /**
-         * Draw my shoots
-         */
-        that.shootContainer = new PIXI.Container();
-
-        that.app.stage.addChild(that.shootContainer);
-        that.shootTexture = PIXI.Texture.fromImage('img/laserBlue02.png');
-
-        /**
-         * Draw enemies shoots
-         */
-        that.enemyShootContainer = new PIXI.Container();
-
-        that.app.stage.addChild(that.enemyShootContainer);
-        that.enemyShootTexture = PIXI.Texture.fromImage('img/laserRed02.png');
-
-        /**
-         * Draw enemies
-         */
-        that.enemiesContainer = new PIXI.Container();
-
-        that.app.stage.addChild(that.enemiesContainer);
-        that.enemyTexture = PIXI.Texture.fromImage('img/enemyRed1.png');
-
-        that.enemy = new PIXI.Sprite(that.enemyTexture);
-        that.enemy.vx = -1.5;
-
-        /**
-         * Draw bonuses
-         */
-        that.bonusContainer = new PIXI.Container();
-
-        that.app.stage.addChild(that.bonusContainer);
-        that.pillTexture = PIXI.Texture.fromImage('img/pill_yellow.png');
-
-        that.boltTexture = PIXI.Texture.fromImage('img/bolt_gold.png');
-
-        that.starTexture = PIXI.Texture.fromImage('img/star_gold.png');
-
-        that.pill = new PIXI.Sprite(that.pillTexture);
-
-        that.pill.anchor.set(0.5);
-        that.pill.x = __WEBPACK_IMPORTED_MODULE_0__const_js__["k" /* width */] + 100;
-        that.pill.y = 100;
-        that.pill.count = true;
-        that.pill.vx = 0;
-        that.bonusContainer.addChild(that.pill);
-
-        that.bolt = new PIXI.Sprite(that.boltTexture);
-
-        that.bolt.anchor.set(0.5);
-        that.bolt.x = __WEBPACK_IMPORTED_MODULE_0__const_js__["k" /* width */] + 100;
-        that.bolt.y = 100;
-        that.bolt.count = true;
-        that.bolt.vx = 0;
-        that.bonusContainer.addChild(that.bolt);
-
-        that.star = new PIXI.Sprite(that.starTexture);
-
-        that.star.anchor.set(0.5);
-        that.star.x = __WEBPACK_IMPORTED_MODULE_0__const_js__["k" /* width */] + 100;
-        that.star.y = 100;
-        that.star.count = true;
-        that.star.vx = 0;
-        that.bonusContainer.addChild(that.star);
-        
-    }
-    
-}
-
-const initGame = new InitGameClass();
 
 
 

@@ -6,7 +6,7 @@ import * as Constant from './const.js'
 import * as firstLazerSound from '../sounds/sfx_laser1.ogg'
 import * as secondLazerSound from '../sounds/sfx_laser2.ogg'
 
-import * as bkgImg from '../img/backgroundImgBlue.png'
+// import * as bkgImg from 'https://tibmt.github.io/CosmicWars/dist/backgroundImgBlue.png'
 
 import {functionalKeys} from './functionalKeys.js'
 import {Howl} from 'howler';
@@ -52,7 +52,7 @@ class Game {
         /**
          * Draw background
          */
-        this.texture = PIXI.Texture.fromImage(bkgImg),
+        this.texture = PIXI.Texture.fromImage('https://tibmt.github.io/CosmicWars/dist/backgroundImgBlue.png'),
 
             this.tilingSprite = new PIXI.extras.TilingSprite(
                 this.texture,

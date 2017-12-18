@@ -1,7 +1,7 @@
-/*@font-face {*/
-    /*font-family:'DeadSpaceTitleFont';*/
-    /*src: url(../fonts/DeadSpaceTitleFont.ttf);*/
-/*}*/
+@font-face {
+    font-family:'DeadSpaceTitleFont';
+    src: url(DeadSpaceTitleFont.ttf?547c9c7ddd5b7bff3c66a41f5785b35c);
+}
 
 body{
     margin: 0;
