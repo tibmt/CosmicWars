@@ -1,0 +1,197 @@
+@font-face {
+    font-family:'DeadSpaceTitleFont';
+    src: url(../fonts/DeadSpaceTitleFont.ttf);
+}
+body{
+    margin: 0px;
+    font-family: 'DeadSpaceTitleFont';
+    color: white;
+}
+.header-wrapper {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    opacity: 0.8;
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-wrapper a:visited {
+    text-decoration: dashed;
+    border: 2px solid black;
+}
+.header-wrapper p {
+    margin: 1.5%;
+}
+.game-name {
+    margin-left: 10%;
+    margin-right: auto;
+}
+.developers {
+    margin-right: 10%;
+}
+.main-picture {
+    position: relative;
+    top: 100px;
+    background-image: url(../img/backGroundImgMain.jpg);
+    background-repeat: no-repeat;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.good-slogan {
+    font-size: 90px;
+    color: white;
+}
+.about-wrapper {
+    height: 600px;
+    background-color: #202843;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+}
+.pay-to-win {
+    margin: 2%;
+    margin-top: 125px;
+    width: 200px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.pay-to-win p {
+    text-align: center;
+}
+.pay-to-win-logo {
+    height: 125px;
+    width: 125px;
+    border-radius: 25%;
+    background-color: yellow;
+}
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    background-color: #09096e;
+}
+.keys-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2% 0;
+    font-size: 30px;
+}
+.keys-wrapper span {
+    padding: 5px;
+    background-color: gray;
+    border: 1px solid black;
+}
+.screenshots-wrapper {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #202843;
+}
+.screenshots-wrapper div {
+    font-size: 50px;
+}
+.screenshots-group {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.screenshot {
+    width: 25%;
+    height: 75%;
+    background-color: black;
+    margin: 2%;
+}
+.screenshot-img {
+    width: 100%;
+    height: 100%;
+}
+.play {
+    height: 500px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #09096e;
+}
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arrow {
+    margin: 25px;
+    font-size: 65px;
+}
+.play-button {
+    font-family: 'DeadSpaceTitleFont';
+    font-size: 25px;
+    border: 0;
+    background-color: aqua;
+    padding: 1.5%;
+    border-radius: 5px;
+}
+.developer-wrapper {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #202843;
+}
+.dev-man {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dev-man img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.dev-man a {
+    font-size: 50px;
+    margin: 20px;
+}
+.link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.link-container a {
+    color: white;
+}
+footer {
+    height: 100px;
+    display: flex;
+    justify-content: flex-end ;
+    align-items: center;
+    background-color: #09096e;
+}
+footer a {
+    font-size: 50px;
+    margin: 20px;
+    margin-right: 10%;
+    color: white;
+}
